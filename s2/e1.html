@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+
+	<script src="../vue-dev/dist/vue.min.js"></script>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<!-- blind v-bindthuoc tinh -->
+	<div id="obj">
+		<p>{{sayhello()}}</p>
+		<a v-bind:href="link"> face</a>
+	</div>
+	<script>
+		 new Vue({
+			el: "#obj",
+			data:{
+				message:'helo0',
+				link:'https:/facebook.com',
+			},
+			methods:{
+				sayhello:function(event){
+					return;
+				}
+			}
+		
+		});
+	</script>
+	<!-- v-once , in ma html-->
+	<div id="obj1">
+		<p v-once>{{message}}-{{sayhello1()}}</p>
+		<a v-bind:href="link"> face</a>
+		<p v-html="linlpass"></p>
+	</div>
+		<script>
+			new Vue({
+			el: "#obj1",
+			data:{
+				message:'helo0',
+				link:'https:/facebook.com',
+				linlpass:'<a href="#">pass</a>',
+			},
+			methods:{
+				sayhello:function(event){
+					return;
+				},
+				sayhello1:function(){
+					this.message='noi dung';
+					return this.message;
+				}
+
+			}
+		
+		});
+		</script>
+</body>
+</html>

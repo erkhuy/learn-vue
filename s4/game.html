@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="">
+	<style>
+
+		.box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #007;
+		}
+		.progress{
+			width: 100%;
+		}
+		hr{
+			width: 100%;
+			height: 5px;
+		}
+		.container{
+			margin: 10% auto;
+		}
+	</style>
+	<script src="../vue.js"></script>
+	<script src="game.js"></script>
+</head>
+<body>
+	<div id="app" class="row container">
+		<div class="row container-fluid  justify-content-center">
+			<div class="col col-sm-6 row">
+				<div class="row container-fluid">
+					<div class="box">person 1=player</div>
+				</div>
+				<div class="row container-fluid">
+					<div class="progress" style="height: 20px;" v-if="playerHearth<max">
+						<div class="progress-bar bg-danger" role="progressbar" :style="{width:playerHearth+'%'}" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+						
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col col-sm-6 row">
+				<div class="row container-fluid">
+					<div class="box">person2 moster</div>
+				</div>
+				<div class="row container-fluid">
+					<div class="progress " style="height: 20px;" v-if="mosterHearth<max">
+						<div class="progress-bar bg-danger" role="progressbar" :style="{width:mosterHearth+'%'}" aria-valuenow="100" aria-valuemin="0" 	aria-valuemax="100">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<template v-if="!running">
+				<div class="row container-fluid justify-content-center" >
+			<button id="start" class="btn btn-primary" @click="startgame">start</button>	
+		</div>	
+		</template> 
+		<template v-else>
+			<div class="row container-fluid justify-content-center" >
+				<button id="attack" class="btn btn-primary" @click="attack">attack</button>
+				<button id="definder"class="btn btn-info"  @click="specail">specail</button>	
+				<button id="hp"class="btn btn-danger" @click="hp">HP</button>	
+				
+				<button id="endgame"class="btn btn-primary"  @click="endgame">End
+			</div>	
+		</template>
+		
+		<hr>
+		<div class="row container-fluid">
+			<span>result</span>
+			<ul>
+				<li>
+					
+				</li>
+			</ul>
+		</div>	
+		
+	</div>
+<script>
+	new Vue({
+	el: "#app",
+	data:{
+		playerHearth:100,
+		mosterHearth:100,
+		gameIs:false,
+		max:101,
+		running:false,
+	},
+	computed:{
+
+	},
+	methods:{
+			startgame:function(){
+					this.running=true;
+					this.playerHearth=100;
+					this.mosterHearth=100;
+			},
+			attack:function(){
+				// monster
+				if( this.playerHearth <= 0){
+					alert('Monster Won');
+					this.running=false;
+					return;
+
+				};
+				if( this.mosterHearth <= 0 ){
+					alert('Player Won');
+					this.running=false;
+					return;
+				};
+				var maxdame=16;
+				var mindame=4;
+				var dame= Math.floor((Math.random() * maxdame) + mindame);
+				this.mosterHearth-=dame;
+
+				// player
+				var dame1= Math.floor((Math.random() * maxdame) + mindame);
+				this.playerHearth-=dame1;
+				
+				if( this.playerHearth <= 0){
+					alert('Monster Won');
+					this.running=false;
+					this.playerHearth = 0;
+					return;
+
+				};
+				if( this.mosterHearth <= 0 ){
+					alert('Player Won');
+					this.running=false;
+					this.mosterHearth = 0;
+					return;
+				};
+				
+			},
+			hp:function(){},
+			specail:function(){},
+			endgame:function(){},
+			inputdame:function(min,max)
+			{
+
+			}
+	},
+	
+});	
+</script>
+</body>
+</html>

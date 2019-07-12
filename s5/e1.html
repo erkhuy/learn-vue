@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<p>{{title}}</p>
+		<button @click="show" ref="inforbutton">show</button>
+		<hello></hello>
+	</div>
+	<div id="app1">
+	<p>{{title}}</p>	
+	<button @click="title='change'">update event</button>
+	<button @click="destroyEvent">destroy event</button>
+	</div>
+	<script>
+		Vue.component('hello',{
+		
+  		template: '<h3>title</h3>'
+		});
+
+		var app = new Vue({
+		
+			el: "#app",
+			data: {
+					title:"new",
+			},
+			computed:{
+
+			},
+			methods:{
+				show:function(){
+					this.title="change";
+					console.log(this.$refs);
+					this.$refs.inforbutton.innerText="after change";
+				},
+			},
+
+			watch: {},
+		});
+		console.log(app.$data.titlel);
+		console.log(app);
+		var app1 = new Vue({
+		
+			el: "#app1",
+			data: {
+				title:'vue js instan lifecycle',
+			},
+			computed:{
+
+			},
+			
+				beforeCreate:function(){
+					console.log('beforeeCreate');
+				},
+				created:function(){
+					console.log('created');
+				},
+				beforeMount:function(){
+					console.log('beforeMount');
+				},
+				mounted:function(){
+					console.log('mounted');
+				},
+				beforeUpdate:function(){
+					console.log('beforeUpdate');
+				},
+				updated:function(){
+					console.log('updated');
+				},
+				beforeDestroy:function(){
+					console.log('beforeDestroy');
+				},
+				destroy:function(){
+					console.log('destroy');
+				},
+			methods:{
+			destroyEvent:function(){
+				this.$destroy();
+				},	
+			},
+			watch: {},
+		});
+	</script>
+</body>
+</html>

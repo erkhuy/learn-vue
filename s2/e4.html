@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../vue-dev/dist/vue.min.js"></script>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="obj">
+		
+			<button v-on:click="a++">tanga</button>
+			<button v-on:click="b++">tangb</button>
+			<p>{{tanga}}</p>
+			<p>{{tangb}}</p>
+			<p>{{tangas()}}</p>
+			<p>{{tangbs()}}</p>
+		
+	</div>
+	<!-- listenevent -->
+	<script>
+		new Vue({
+			el: "#obj",
+			data:{
+				a:0,
+				b:0,
+			},
+			computed:{
+			tanga:function(){
+					console.log('aa');
+					return this.a;
+				},
+				tangb:function(){
+					console.log('ab');
+					return this.b;
+				}
+			},
+			methods:{
+				
+				tangas:function(){
+					console.log('a');
+					return this.a;
+				},
+				tangbs:function(){
+					console.log('b');
+					return this.b;
+				}	
+			}
+		
+			
+		});
+	</script>
+</body>
+</html>

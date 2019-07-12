@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+
+	<script src="../vue-dev/dist/vue.min.js"></script>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(menu ,i) in menus" :key="menu">{{menu}} {{i}}</li>
+		</ul>
+		<!-- <template v-for="(menu , index ) in menus">
+			<h3>{{menu}}</h3>
+			<p>{{index}}</p>
+		</template>
+			<ul>
+				<li v-for="student in students">
+						<p v-for="(val ,key ) in student"> {{key}}->{{val}}</p>
+				</li>
+			</ul>
+			<ul>
+				<li v-for="n in numbers">{{n}}</li>
+			</ul> -->
+			<button @click="menus.push('test')">addnew manus</button>
+	</div>
+	<script>
+	var app=new Vue({
+			el: "#app",
+			data:{
+				menus:['home','abount','blog','contact'],
+				numbers:[1,2,3,4],
+				students:[
+					{
+						name:'huy1',
+						class:'a1',
+					},
+					{
+						name:'huy2',
+						class:'a2',
+					},
+					{
+						name:'hu3y',
+						class:'a3',
+					},
+				],
+			},
+			});
+		
+	</script>
+</body>
+</html>

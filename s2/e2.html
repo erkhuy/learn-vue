@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../vue-dev/dist/vue.min.js"></script>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="obj">
+		<div v-on:mouseover="doxy">
+			<h1>ban nut lang nghre su kien</h1>
+			<button v-on:click="tang">tang</button>
+			<button v-on:click="dem++">tang</button>
+			<p>{{dem}}</p>
+			<p>{{(dem >5)?'lon hon 5':'be hon 5'}}</p>
+			
+			<p>{{x}}-{{y}}</p>
+			<span v-on:mouseover.stop> dung c2 </span>
+			<span v-on:mouseover="stop"> dng c1 </span>
+			<div>
+				<input type="text" v-on:keyup.enter="keyaller">
+
+			</div>
+		</div>
+		
+	</div>
+	<!-- listenevent -->
+	<script>
+		new Vue({
+			el: "#obj",
+			data:{
+				dem:0,
+				x:0,
+				y:0,
+			},
+			methods:{
+				tang:function(){
+					this.dem++;
+				},
+				doxy:function(event){
+					this.x=event.clientX;
+					this.y=event.clientY;
+				},
+				// cach 1s
+				stop:function(event){
+					event.stopPropagation();//dung dien bien cua su kien ma ban gan cho no
+				},
+				// cach 2
+				// ban phim
+				keyaller:function(){
+					alert('ok');
+				}
+			}
+		
+			
+		})
+	</script>
+</body>
+</html>

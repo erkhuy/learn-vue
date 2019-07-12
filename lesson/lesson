@@ -1,0 +1,97 @@
+
+0.in ra lan dau:v-once
+	<p v-once>{{message}}-{{sayhello1()}}</p>
+		inlink: v-href:bind="ten bien"
+		<a v-bind:href="link"> face</a>
+		in html :v-html="ten bien"
+		<p v-html="linlpass"></p>
+lang nghe event tu ban phim 
+v-keyup.key
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a :[key]="url"> ... </a>
+<!-- shorthand with dynamic argument (2.6.0+) -->
+<a @[event]="doSomething"> ... </a>
+1.
+cách 2 bindding data  :
+3 toi uu hoa qua computed
+vhi la thuoc tinh co the thuc hien funtion nhung khai bao function su ding o dang property
+compute chay truoc funtion
+vd:
+button v-on:click="a++">tanga</button>
+			<button v-on:click="b++">tangb</button>
+			<p>{{tanga}}</p>
+			<p>{{tangb}}</p>
+		
+	</div>
+	<!-- listenevent -->
+	<script>
+		new Vue({
+			el: "#obj",
+			data:{
+				a:0,
+				b:0,
+			},
+			computed:{
+			tanga:function(){
+					console.log('a');
+					return this.a;
+				},
+				tangb:function(){
+					console.log('b');
+					return this.b;
+				}
+			},
+5.watch dung de dua ra cai hi do khi cai do thay doi
+7.short hand
+8.tuowng tacs css qua name
+9. điều kiện
+v-show k ap dung cho termplate
+
+temlplace dung qun li cum v-if v-else
+10 vong lap
+11 truy cap
+tenvue.$tenthanhpahn.tenthucotinh
+ref:referen
+$ten thnha phanmac dinh
+ref:<button @click="show" ref="inforbutton">show</button>
+show:function(){
+					this.title="change";
+					console.log(this.$refs);
+				},
+				rea mot dong thong tin cua buuton co the thay doi
+tương tụ có thể dùng với nhiều thẻ khác.
+app.$refs.inforvvv.inner text không có khẻ năng ghi đè lên khi ta sử dụng vue js.
+không thể sử dụng vỡi v-if nếu không được hiện
+
+13.vue api
+14.componnent
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+  v-bind:content="post.content"
+  v-bind:publishedAt="post.publishedAt"
+  v-bind:comments="post.comments"
+></blog-post>
+Vì vậy, đây có thể là thời điểm tốt để cấu trúc lại <blog-post>thành phần để chấp nhận một chỗ dựa postthay thế:
+
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+></blog-post>
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+là thành phần của vue cho phép n quản lí nhiều đối tượng hơn
+14. vong doi
+
+15<style scoped>
+
+</style> chi su dung cho componet rieng

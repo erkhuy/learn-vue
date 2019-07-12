@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../vue-dev/dist/vue.min.js"></script>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="obj">
+		<p>
+			{{message}}
+		</p>
+		
+	</div>
+	<!-- listenevent -->
+	<script>
+		var app=new Vue({
+			el: "#obj",
+			data:{
+				message:'bana co 7 diem',
+			},
+			watch:{
+				message:function(newValue){
+					console.log('a dk ng khac nhap');
+				}
+			}
+			
+		});
+		app.message='a9';
+	</script>
+</body>
+</html>
